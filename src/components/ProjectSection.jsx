@@ -1,53 +1,50 @@
 import { useState } from "react";
 
+const CATEGORY_DATA = [
+  { title: "All" },
+  { title: "UIUX" },
+  { title: "DESIGN" },
+  { title: "DEVELOPMENT" },
+];
+
+const CARD_DATA = [
+  {
+    id: 1,
+    img: "project-list-thumb-1.png",
+    title: "타이틀이 들어갑니다.",
+    desc: "서브타이틀이 들어갑니다. 서브타이틀이 들어갑니다.",
+    alt: "썸네일 이미지",
+    category: "UIUX",
+  },
+  {
+    id: 2,
+    img: "project-list-thumb-2.png",
+    title: "타이틀이 들어갑니다.",
+    desc: "서브타이틀이 들어갑니다. 서브타이틀이 들어갑니다.",
+    alt: "썸네일 이미지",
+    category: "UIUX",
+  },
+  {
+    id: 3,
+    img: "project-list-thumb-3.png",
+    title: "타이틀이 들어갑니다.",
+    desc: "서브타이틀이 들어갑니다. 서브타이틀이 들어갑니다.",
+    alt: "썸네일 이미지",
+    category: "DESIGN",
+  },
+  {
+    id: 4,
+    img: "project-list-thumb-4.png",
+    title: "타이틀이 들어갑니다.",
+    desc: "서브타이틀이 들어갑니다. 서브타이틀이 들어갑니다.",
+    alt: "썸네일 이미지",
+    category: "DEVELOPMENT",
+  },
+];
+
 export default function ProjectSection() {
-  const [isOpen, setIsOpen] = useState("All");
+  const [activeCategory, setActiveCategory] = useState("All");
 
-  const categoryContent = [
-    { title: "All" },
-    { title: "UIUX" },
-    { title: "DESIGN" },
-    { title: "DEVELOPMENT" },
-  ];
-
-  const cardContent = [
-    {
-      id: 1,
-      img: "project-list-thumb-1.png",
-      title: "타이틀이 들어갑니다.",
-      desc: "서브타이틀이 들어갑니다. 서브타이틀이 들어갑니다.",
-      alt: "썸네일 이미지",
-      category: "UIUX",
-    },
-    {
-      id: 2,
-      img: "project-list-thumb-2.png",
-      title: "타이틀이 들어갑니다.",
-      desc: "서브타이틀이 들어갑니다. 서브타이틀이 들어갑니다.",
-      alt: "썸네일 이미지",
-      category: "UIUX",
-    },
-    {
-      id: 3,
-      img: "project-list-thumb-3.png",
-      title: "타이틀이 들어갑니다.",
-      desc: "서브타이틀이 들어갑니다. 서브타이틀이 들어갑니다.",
-      alt: "썸네일 이미지",
-      category: "DESIGN",
-    },
-    {
-      id: 4,
-      img: "project-list-thumb-4.png",
-      title: "타이틀이 들어갑니다.",
-      desc: "서브타이틀이 들어갑니다. 서브타이틀이 들어갑니다.",
-      alt: "썸네일 이미지",
-      category: "DEVELOPMENT",
-    },
-  ];
-
-  // all 일때 acitve
-  //클릭하면 acitve
-  //
   return (
     <section className="subpage-section">
       <div className="container">
@@ -55,13 +52,13 @@ export default function ProjectSection() {
           <h2 className="section-title">PROJECT</h2>
 
           <div className="category-list">
-            {categoryContent.map((category) => (
+            {CATEGORY_DATA.map((category) => (
               <button
                 type="button"
                 className={`tag-btn tag-btn--tab 
-                  ${isOpen === category.title ? "active" : ""}`}
+                  ${activeCategory === category.title ? "active" : ""}`}
                 key={category.title}
-                onClick={() => setIsOpen(category.title)}
+                onClick={() => setActiveCategory(category.title)}
               >
                 #{category.title}
               </button>
@@ -69,9 +66,9 @@ export default function ProjectSection() {
           </div>
 
           <div className="grid-container">
-            {cardContent.map((item) => (
+            {CARD_DATA.map((item) => (
               <article
-                className={`card ${isOpen === "All" || item.category === isOpen ? "active" : ""}`}
+                className={`card ${activeCategory === "All" || item.category === activeCategory ? "active" : ""}`}
                 key={item.id}
               >
                 <figure className="card-thumb">

@@ -4,11 +4,11 @@ export default function Header() {
   const [isDropBox, setIsDropBox] = useState(false);
   const searchRef = useRef(null);
   const inputRef = useRef(null);
-  const [isTag, setIsTag] = useState("");
+  const [selectedTag, setSelectedTag] = useState("");
 
   function selectTag(e, item) {
     e.stopPropagation();
-    setIsTag(item);
+    setSelectedTag(item);
     setIsDropBox(false);
     inputRef.current?.focus();
   }
@@ -92,9 +92,9 @@ export default function Header() {
               ref={inputRef}
               type="text"
               placeholder="키워드를 입력하세요."
-              value={isTag}
+              value={selectedTag}
               onClick={() => setIsDropBox(true)}
-              onChange={(e) => setIsTag(e.target.value)}
+              onChange={(e) => setSelectedTag(e.target.value)}
             />
             <button type="button" className="btn-search">
               <i className="fa-solid fa-magnifying-glass"></i>
