@@ -69,8 +69,7 @@ export default function IntroHero() {
             <h2 className="title">메인타이틀 문구가 들어갑니다.</h2>
             <p className="desc">
               서브 타이틀 내용이 들어갑니다. 서브 타이틀 내용이 들어갑니다.
-              <br />
-              서브 타이틀 내용이 들어갑니다.
+              <br /> 서브 타이틀 내용이 들어갑니다.
             </p>
           </div>
         </SwiperSlide>
